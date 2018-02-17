@@ -15,4 +15,6 @@ jobs:
           command: gpg --import aws-xray.gpg        
       - run:
           command: gpg --verify aws-xray-daemon-linux-2.0.0.zip.sig aws-xray-daemon-linux-2.0.0.zip      
+      - run:
+          command: apt-get install -y gpg
             
