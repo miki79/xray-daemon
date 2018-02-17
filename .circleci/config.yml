@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: docker
+
+    steps:
+      - checkout
+      - run:
+          command: export BUCKETURL=https://s3.dualstack.${REGION}.amazonaws.com/aws-xray-assets.${REGION}
+      - run:
+          name: configure NPM registry
+          command: wget ${BUCKETURL}/xray-daemon/aws-xray-daemon-linux-2.x.zip
+      - run:
+          command: wget ${BUCKETURL}/xray-daemon/aws-xray.gpg
+      - run:
+          command: gpg --import aws-xray.gpg        
+      - run:
+          command: gpg --verify aws-xray-daemon-linux-2.0.0.zip.sig aws-xray-daemon-linux-2.0.0.zip      
+            
