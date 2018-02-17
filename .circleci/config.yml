@@ -28,4 +28,6 @@ jobs:
             docker build -t miki79/xray-daemon:$TAG .
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker push miki79/xray-daemon:$TAG
+            docker tag miki79/xray-daemon:$TAG miki79/xray-daemon:latest
+            docker push miki79/xray-daemon:latest
             
