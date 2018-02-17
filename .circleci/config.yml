@@ -7,12 +7,10 @@ jobs:
     steps:
       - checkout
       - run:
-          command: export BUCKETURL=https://s3.dualstack.${REGION}.amazonaws.com/aws-xray-assets.${REGION}
-      - run:
           name: configure NPM registry
-          command: wget ${BUCKETURL}/xray-daemon/aws-xray-daemon-linux-2.x.zip
+          command: wget https://s3.dualstack.${REGION}.amazonaws.com/aws-xray-assets.${REGION}/xray-daemon/aws-xray-daemon-linux-2.x.zip
       - run:
-          command: wget ${BUCKETURL}/xray-daemon/aws-xray.gpg
+          command: wget https://s3.dualstack.${REGION}.amazonaws.com/aws-xray-assets.${REGION}/xray-daemon/aws-xray.gpg
       - run:
           command: gpg --import aws-xray.gpg        
       - run:
